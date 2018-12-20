@@ -5,7 +5,7 @@
 * I liked tinkering with Bash for this.
 
 ## Requirements
-Needs the ImageMagick package for the <i>convert</i> command. I installed it with [Homebrew](https://brew.sh/):
+Needs the [ImageMagick](https://www.imagemagick.org/script/index.php) package for the <i>convert</i> command. I installed it with [Homebrew](https://brew.sh/):
 
 ```
 brew install imagemagick
