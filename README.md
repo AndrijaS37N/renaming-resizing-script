@@ -2,7 +2,7 @@
 ### A simple Bash console app.
 
 * Made for the <b>CS324 Scripting Languages</b> course. 🍏
-* Used and tested on Mac OS, I presume it works fine on Linux. However, this was not checked.
+* Used and tested on MacOS. I presume it works fine on Linux. However, this was not checked.
 * I liked tinkering with Bash for this.
 
 ## Requirements
