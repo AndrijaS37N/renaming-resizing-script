@@ -3,6 +3,7 @@
 
 * Used and tested on MacOS. I presume it works fine on Linux. However, this was not checked.
 * I liked tinkering with Bash for this.
+* Made in PyCharm with BashSupport.
 
 ## Requirements
 Needs the [ImageMagick](https://www.imagemagick.org/script/index.php) package for the <i>convert</i> command. I installed it with [Homebrew](https://brew.sh/):
