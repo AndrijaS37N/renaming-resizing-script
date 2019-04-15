@@ -1,4 +1,4 @@
-# renaming-resizing-script
+# Renaming Resizing Script
 ### A simple Bash console app.
 
 * Used and tested on MacOS. I presume it works fine on Linux. However, this was not checked.
@@ -15,9 +15,9 @@ brew install imagemagick
 For Linux you could try using Linuxbrew or some other alternative to Homebrew.
 
 #### Project results:
-<h6>View 1</h6>
+<h6>Script Activation &#x2198;</h6>
 <img src="snapshots/view-1.png" alt="View 1">
-<h6>View 2</h6>
+<h6>Script Work &#x2198;</h6>
 <img src="snapshots/view-2.png" alt="View 2">
 
 
