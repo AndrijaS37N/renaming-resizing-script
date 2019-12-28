@@ -1,34 +1,41 @@
 #!/usr/bin/env bash
 
-# TODO -> update this if there are changes to the arguments passed
-printf "USAGE: \n* 'bash $0 dir_arg'\n* 'bash $0 percentage_arg dir_arg'\n* 'bash $0 width_arg height_arg dir_arg'\nAnything else will not work properly.\n"
+# Update this if there are changes to the arguments passed.
+# shellcheck disable=SC2059
+printf "Usage: \n* 'bash $0 dir_arg'\n* 'bash $0 percentage_arg dir_arg'\n* 'bash $0 width_arg height_arg dir_arg'\nAnything else will not work properly.\n"
 
 execute_script() {
-    while [[ $prefix = "" ]];
+    while [[ $prefix = '' ]];
     do
-        printf "\nEnter chosen prefix: "
+        printf '\nEnter chosen prefix: '
+        # shellcheck disable=SC2162
         read prefix
     done
 
     # downloads/combined was the placeholder
+    # shellcheck disable=SC2016
     printf "Target directory: $dir\n"
+    # shellcheck disable=SC2164
+    # shellcheck disable=SC2016
     cd "$dir"
 
     readonly LOG="chronicle.log"
 
     now=$(date '+%d/%m/%Y | %r')
-    echo "-> New renaming started:" >> $LOG
+    echo '-> New renaming started:' >> $LOG
 
-    # declaring an array variable
+    # Declaring an array variable.
+    # shellcheck disable=SC2207
     declare -a files=(`ls`)
+    # shellcheck disable=SC2145
     echo "Files here: ${files[@]}"
 
-    printf "Loader: \n"
-    echo "*"
+    printf 'Loader: \n'
+    echo '*'
 
     # for loading the renaming and/or size conversion
     loader=1
-    sp="/-\|"
+    sp='/-\|'
     echo -n ' '
 
     id=0
@@ -40,7 +47,7 @@ execute_script() {
             mv "$file" "$prefix-$id".jpg
 
             if [[ "$percentage" != "" ]]; then
-                convert "$prefix-$id".jpg -resize "$percentage"% "$prefix-$id".jpg
+                convert "$prefix-$id".jpg -resize "$percentage"% "$prefix-$id".jpg  # standardize to a jpg
             fi
 
             if [[ "$width" != "" && "$height" != "" ]]; then
@@ -51,19 +58,19 @@ execute_script() {
         fi
     done
 
-    printf "\n*"
+    printf '\n*'
 
     if [[ "$id" -ne 0 ]]; then
         echo "-> Renaming files date: $now" >> $LOG
-        printf "\nRenaming complete. Check your renamed images in this file: $LOG\n"
+        printf "\nRenaming complete. Check your renamed images in this file: $LOG"
     else
-        printf "\nNo .jpeg, .png or .jpg files present in this dir.\n"
-        echo "ABORTED" >> $LOG
+        printf '\nNo .jpeg, .png or .jpg files present in this dir.\n'
+        echo 'Aborted!' >> $LOG
     fi
 }
 
 # echo "Arguments count: $#"
-# arguments passed
+# Arguments passed.
 if [[ "$#" -eq 1 ]]; then
     dir="$1"
     execute_script
@@ -74,8 +81,9 @@ elif [[ "$#" -eq 2 ]]; then
 elif [[ "$#" -eq 3 ]]; then
     width="$1"
     height="$2"
+    # shellcheck disable=SC2034
     dir="$3"
     execute_script
 else
-    printf "Invalid argument size.\n"
+    printf 'Invalid argument size.\n'
 fi
