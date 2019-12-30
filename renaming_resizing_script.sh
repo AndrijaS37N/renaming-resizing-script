@@ -27,8 +27,16 @@ execute_script() {
     # Declaring an array variable.
     # shellcheck disable=SC2207
     declare -a files=(`ls`)
-    # shellcheck disable=SC2145
-    echo "Files here: ${files[@]}"
+
+    printf 'Print read files in this folder (Y/n): '
+    # shellcheck disable=SC2162
+    read read_files
+
+    if [[ "$read_files" = 'Y' || "$read_files" = 'y' ]]
+    then
+      # shellcheck disable=SC2145
+      echo "Files here: ${files[@]}"
+    fi
 
     printf 'Loader: \n'
     echo '*'
@@ -62,7 +70,7 @@ execute_script() {
 
     if [[ "$id" -ne 0 ]]; then
         echo "-> Renaming files date: $now" >> $LOG
-        printf "\nRenaming complete. Check your renamed images in this file: $LOG"
+        printf "\nRenaming complete. Check your renamed images in this file: $LOG\n"
     else
         printf '\nNo .jpeg, .png or .jpg files present in this dir.\n'
         echo 'Aborted!' >> $LOG
